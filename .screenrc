@@ -1,0 +1,23 @@
+vbell off
+escape ^Z^Z
+
+# F1 - F4 Bind
+bindkey -k k1 select 0
+bindkey -k k2 select 1
+bindkey -k k3 select 2
+bindkey -k k4 select 3
+
+# F5 - F8 bind
+bindkey -k k5 prev
+bindkey -k k6 next
+bindkey -k k7 title
+bindkey -k k8 focus
+
+# F9 - F10 Bind
+bindkey -k k9 split
+bindkey -k k; fit
+bindkey -k F1 only
+bindkey -k F2 remove
+
+# Insert key bind
+bindkey -k kI copy
