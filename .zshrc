@@ -51,6 +51,12 @@ prompt="
 %# "
 
 # Environment variables
-export PATH=$PATH:$HOME/bin
 export GREP_OPTIONS='--color=auto'
 export LANG=ja_JP.UTF-8
+
+# Banner
+echo ""
+echo "> [桜雲] - Sakmo OpenServer"
+echo "  sakmo.dix.asia (`hostname -i`) OpenSSH Remote Shell Service"
+echo ""
+
