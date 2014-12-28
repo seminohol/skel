@@ -42,7 +42,7 @@ alias lf='ls -AF --color'
 alias ll='ls -lhA --color'
 alias ls='ls -hF --color'
 alias df='df -h'
-alias tmux='tmux -2'
+alias tmux='tmux -u2'
 alias bye=exit
 
 # Prompt

@@ -8,9 +8,9 @@ fi
 # TMUX autoload since login
 if [ -z $TMUX ]; then
   if $(tmux has-session 2> /dev/null); then
-    exec tmux -2 attach
+    exec tmux -u2 attach
   else
-    exec tmux -2
+    exec tmux -u2
   fi
 fi
 
