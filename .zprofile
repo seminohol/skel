@@ -5,5 +5,12 @@ fi
 
 # Environmental Variables
 
-# Launch byobu
-`echo $- | grep -qs i` && byobu-launcher && exit 0
+# TMUX autoload since login
+if [ -z $TMUX ]; then
+  if $(tmux has-session 2> /dev/null); then
+    exec tmux -2 attach
+  else
+    exec tmux -2
+  fi
+fi
+
