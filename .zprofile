@@ -5,12 +5,17 @@ fi
 
 # Environmental Variables
 
+# TMUX autoload cancellation when connecting by SCP
+if [ -z "$PS1" ]; then
+    return;
+fi
+
 # TMUX autoload since login
-#if [ -z $TMUX ]; then
-#  if $(tmux has-session 2> /dev/null); then
-#    exec tmux -u2 attach
-#  else
-#    exec tmux -u2
-#  fi
-#fi
+if [ -z $TMUX ]; then
+  if $(tmux has-session 2> /dev/null); then
+    exec tmux -u2 attach
+  else
+    exec tmux -u2
+  fi
+fi
 
