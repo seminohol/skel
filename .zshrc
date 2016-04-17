@@ -56,7 +56,6 @@ export LANG=ja_JP.UTF-8
 stty stop undef
 
 # Banner
-echo ""
-echo -e "> \e[7m阿賀野\e[m - Experimental Server "
-echo "  `hostname -f` (`hostname -i`) OpenSSH Remote Shell Service"
-echo ""
+if [ -f ~/.banner ]; then
+        source ~/.banner
+fi
