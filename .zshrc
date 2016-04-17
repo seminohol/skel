@@ -7,9 +7,6 @@ zstyle :compinstall filename "/home/$USER/.zshrc"
 autoload -Uz compinit
 compinit
 
-setopt auto_cd
-function chpwd(){ ls -F --color }
-
 # End of lines added by compinstall
 
 
@@ -22,6 +19,14 @@ bindkey -e
 
 # End of lines configured by zsh-newuser-install
 
+# zsh-only Custom Configurations
+setopt auto_cd
+function chpwd(){ ls -F --color }
+
+# Prompt
+prompt="
+%n@%m %/
+%# "
 
 # adapt zsh-syntax-highlighting
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
@@ -34,26 +39,17 @@ if [[ -f ~/.zsh/dircolors-solarized/dircolors.256dark && -x `which dircolors` ]]
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
 
-# Aliases
-alias h='history 25'
-alias j='jobs -l'
-alias la='ls -aF --color'
-alias lf='ls -AF --color'
-alias ll='ls -lhA --color'
-alias ls='ls -hF --color'
-alias df='df -h'
-alias tmux='tmux -u2'
-alias bye=exit
-
-# Prompt
-prompt="
-%n@%m %/
-%# "
-
-# Environment variables
-export GREP_OPTIONS='--color=auto'
-export LANG=ja_JP.UTF-8
+# Options
 stty stop undef
+
+if [ -f ~/.alias ]; then
+  source ~/.alias
+fi
+
+# Environmental variables
+if [ -f ~/.export ]; then
+  source ~/.export
+fi
 
 # Banner
 if [ -f ~/.banner ]; then
