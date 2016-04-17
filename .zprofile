@@ -24,4 +24,4 @@ fi
 #  if [ $TERM != "dumb" ]; then
 #    exec screen -xR
 #  fi
-fi
+#fi
