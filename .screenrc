@@ -3,7 +3,7 @@ escape ^Z^Z
 
 defutf8 on
 defencoding utf8
-encoding utf-8 utf-8
+encoding utf8 utf8
 
 # F1 - F4 Bind
 bindkey -k k1 select 0
@@ -26,9 +26,12 @@ bindkey -k F2 remove
 # Insert key bind
 bindkey -k kI copy
 
-# Split Command
+# Split command
 bind - split
 bind | split -v
 bind { resize +10
 bind } resize -10
 bind = resize = 
+
+# Statusbar definition
+hardstatus alwayslastline '%{= kw}%02c:%s %L=%{= .b}%-w%46>%{= .r}%n %t*%{= .b}%+w%-25=%{= .y}%H %{= .y}[%l]'
