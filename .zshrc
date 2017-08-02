@@ -21,7 +21,7 @@ bindkey -e
 
 # zsh-only Custom Configurations
 setopt auto_cd
-function chpwd(){ gnuls -F --color }
+function chpwd(){ ls -F --color }
 
 # Prompt
 prompt="
