@@ -1,4 +1,19 @@
-*history
-.histfile
-.zcompdump
-.lesshst
+# Ignoring all files
+/*
+/.*
+
+# Collection of dotfiles
+!/.bash_profile
+!/.bashrc
+!/.vimrc
+!/.vim
+!/.gitignore
+!/.gitconfig
+!/.screenrc
+!/.tmux.conf
+!/.zshrc
+!/.zprofile
+!/.export
+!/.alias
+!/.zsh.d
+!/.emacs
