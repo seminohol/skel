@@ -22,5 +22,6 @@
 # but ignorng follows
 /.emacs.d/backups/*
 /.emacs.d/auto-save-list/*
+/.emacs.d/recentf
 *.elc
 *~
