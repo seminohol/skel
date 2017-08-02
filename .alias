@@ -10,4 +10,4 @@ alias tmux='tmux -u2'
 alias bye=exit
 
 alias dockat='docker attach --sig-proxy=false'
-alias emacs='emacsclient -c'
+alias emacs='emacsclient --alternate-editor="" -c'

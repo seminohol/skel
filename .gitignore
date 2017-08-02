@@ -17,3 +17,10 @@
 !/.alias
 !/.zsh.d
 !/.emacs
+!/.emacs.d
+
+# but ignorng follows
+/.emacs.d/backups/*
+/.emacs.d/auto-save-list/*
+*.elc
+*~
