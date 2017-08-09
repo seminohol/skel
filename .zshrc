@@ -25,7 +25,7 @@ function chpwd(){ ls -F --color }
 
 # PROMPT
 case "$TERM" in
-xterm*|rxvr*|*-256color)
+xterm*|rxvt*|*-256color)
     PROMPT="
 %F{green}%n@%m%f %F{blue}%/%f
 %# "
