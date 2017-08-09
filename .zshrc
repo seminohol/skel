@@ -24,9 +24,19 @@ setopt auto_cd
 function chpwd(){ ls -F --color }
 
 # Prompt
-prompt="
+case "$TERM" in
+xterm*|rxvr*|*-256color)
+    prompt="
+%F{green}%n@%m%f %F{blue}%/%f
+%# "
+    ;;
+*)
+    prompt="
 %n@%m %/
 %# "
+    ;;
+esac
+
 
 # adapt zsh-syntax-highlighting
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
