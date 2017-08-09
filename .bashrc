@@ -28,7 +28,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -37,7 +37,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -84,32 +84,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
-
-# some more aliases
-alias sl="sudo leafpad /etc/apt/sources.list"
-alias install='sudo apt-get install'
-alias reinstall='sudo apt-get install --reinstall'
-alias finstall='sudo apt-get -f install'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get dist-upgrade'
-alias dupgrade='sudo apt-get update && sudo apt-get dist-upgrade'
-alias remove='sudo apt-get remove'
-alias autoremove='sudo apt-get autoremove'
-alias purge='sudo apt-get remove --purge'
-alias agp='sudo apt-get autoremove --purge'
-alias add='sudo add-apt-repository'
-alias search='apt-cache search'
-alias clean='sudo apt-get clean'
-alias autoclean='sudo apt-get autoclean'
-alias sinstall='sudo apt-get install --no-install-recommends'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -128,7 +109,5 @@ if ! shopt -oq posix; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
-
-fi
-PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] @ \[\033[0;36m\]\h  \w\[\033[0;32m\]\n\[\033[0;32m\]└─\[\033[0m\033[0;32m\] \$\[\033[0m\033[0;32m\] ▶\[\033[0m\] '
+  fi
 fi
