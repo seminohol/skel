@@ -23,15 +23,15 @@ bindkey -e
 setopt auto_cd
 function chpwd(){ ls -F --color }
 
-# Prompt
+# PROMPT
 case "$TERM" in
 xterm*|rxvr*|*-256color)
-    prompt="
+    PROMPT="
 %F{green}%n@%m%f %F{blue}%/%f
 %# "
     ;;
 *)
-    prompt="
+    PROMPT="
 %n@%m %/
 %# "
     ;;
