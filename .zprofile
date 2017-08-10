@@ -3,7 +3,8 @@ if [ -d "$HOME/opt/bin" ] ; then
     PATH="$HOME/opt/bin:$PATH"
 fi
 
-# Environmental Variables
+# Common Environmental Variables
+export LANG=ja_JP.UTF-8
 
 # TMUX/Screen autoload cancellation when connecting by SCP
 if [ -z "$PS1" ]; then
