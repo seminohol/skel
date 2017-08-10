@@ -6,6 +6,17 @@ fi
 # Common Environmental Variables
 export LANG=ja_JP.UTF-8
 
+# Common aliases
+alias crontab='crontab -i'
+alias grep='grep --color=auto'
+alias df='df -h'
+alias tmux='tmux -u2'
+alias bye=exit
+alias la='ls --color -aF'
+alias lf='ls --color -AF'
+alias ll='ls --color -lhA'
+alias ls='ls --color -hF'
+
 # TMUX/Screen autoload cancellation when connecting by SCP
 if [ -z "$PS1" ]; then
     return;
