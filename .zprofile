@@ -17,6 +17,7 @@ alias la='ls --color -aF'
 alias lf='ls --color -AF'
 alias ll='ls --color -lhA'
 alias ls='ls --color -hF'
+alias emacs='$HOME/opt/bin/edit'
 
 # TMUX/Screen autoload cancellation when connecting by SCP
 if [ -z "$PS1" ]; then
