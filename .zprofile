@@ -5,6 +5,7 @@ fi
 
 # Common Environmental Variables
 export LANG=ja_JP.UTF-8
+export EDITOR=$HOME/opt/bin/edit
 
 # Common aliases
 alias crontab='crontab -i'
