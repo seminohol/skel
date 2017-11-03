@@ -21,5 +21,6 @@
 /.emacs.d/backups/*
 /.emacs.d/auto-save-list/*
 /.emacs.d/recentf
+/.emacs.d/tramp
 *.elc
 *~
