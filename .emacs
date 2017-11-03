@@ -55,7 +55,7 @@
     (helm-source-buffers-list helm-source-recentf helm-source-files-in-current-dir helm-source-emacs-commands-history helm-source-emacs-commands)))
  '(package-selected-packages
    (quote
-    (multiple-cursors http centered-cursor-mode yascroll hlinum volatile-highlights anzu php-mode web-mode helm popup-kill-ring popup-complete auto-complete auto-save-buffers-enhanced flatland-black-theme flatland-theme monokai-theme))))
+    (multiple-cursors http centered-cursor-mode yascroll hlinum volatile-highlights anzu php-mode web-mode helm popup-kill-ring popup-complete auto-complete flatland-black-theme flatland-theme monokai-theme))))
 
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
@@ -149,12 +149,6 @@
 	    backup-directory-alist))
 (setq auto-save-file-name-transforms
       `((".*", (expand-file-name "~/.emacs.d/backups/") t)))
-
-;; Auto-save when idle
-(require 'auto-save-buffers-enhanced)
-(setq auto-save-buffers-enhanced-interval 5) ; wait [s]
-(setq auto-save-buffers-enhanced-quiet-save-p t) ; suppress minibuffer messages
-(auto-save-buffers-enhanced t)
 
 ; ask when quiting emacs
 (setq confirm-kill-emacs 'y-or-n-p)
