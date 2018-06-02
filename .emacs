@@ -55,7 +55,7 @@
     (helm-source-buffers-list helm-source-recentf helm-source-files-in-current-dir helm-source-emacs-commands-history helm-source-emacs-commands)))
  '(package-selected-packages
    (quote
-    (multiple-cursors http centered-cursor-mode yascroll hlinum volatile-highlights anzu php-mode web-mode helm popup-kill-ring popup-complete auto-complete flatland-black-theme flatland-theme monokai-theme))))
+    (tabbar multiple-cursors http centered-cursor-mode yascroll hlinum volatile-highlights anzu php-mode web-mode helm popup-kill-ring popup-complete auto-complete flatland-black-theme flatland-theme monokai-theme))))
 
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
@@ -112,6 +112,8 @@
 ; but No sense in Win32 environment.
 ; (define-key global-map (kbd "C-t") 'suspend-emacs)
 
+;; Extensions
+
 ; Window move
 (global-set-key (kbd "C-c <left>")  'windmove-left)
 (global-set-key (kbd "C-c <down>")  'windmove-down)
@@ -122,7 +124,45 @@
 (global-set-key (kbd "C-M-<down>") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-M-<up>") 'mc/mark-previous-like-this)
 
-; Disable fucking annoying audible bell
+; tabber
+(require 'tabbar)
+(tabbar-mode)
+(tabbar-mwheel-mode nil)                  ; マウスホイール無効
+(setq tabbar-buffer-groups-function nil)  ; グループ無効
+(setq tabbar-use-images nil)              ; 画像を使わない
+
+					; キー割り当て
+(global-set-key (kbd "<C-tab>") 'tabbar-forward-tab)
+(global-set-key (kbd "<C-S-tab>") 'tabbar-backward-tab)
+
+					; 左側のボタンを消去
+(dolist (btn '(tabbar-buffer-home-button
+               tabbar-scroll-left-button
+               tabbar-scroll-right-button))
+  (set btn (cons (cons "" nil)
+                 (cons "" nil))))
+
+					; タブセパレータの長さ
+(setq tabbar-separator '(2.0))
+
+					; 表示するバッファの制限
+(defun my-tabbar-buffer-list ()
+  (delq nil
+        (mapcar #'(lambda (b)
+                    (cond
+					; Always include the current buffer.
+                     ((eq (current-buffer) b) b)
+                     ((buffer-file-name b) b)
+                     ((char-equal ?\  (aref (buffer-name b) 0)) nil)
+                     ((equal "*scratch*" (buffer-name b)) b) ; *scratch*バッファは表示する
+                     ((char-equal ?* (aref (buffer-name b) 0)) nil) ; それ以外の * で始まるバッファは表示しない
+                     ((buffer-live-p b) b)))
+                (buffer-list))))
+
+(setq tabbar-buffer-list-function 'my-tabbar-buffer-list)
+
+
+; Disable fuckin annoying audible bell
 (setq ring-bell-function 'ignore)
 
 ; Move-line (M-N or M-P)
