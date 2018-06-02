@@ -55,7 +55,7 @@
     (helm-source-buffers-list helm-source-recentf helm-source-files-in-current-dir helm-source-emacs-commands-history helm-source-emacs-commands)))
  '(package-selected-packages
    (quote
-    (wanderlust tabbar multiple-cursors http centered-cursor-mode yascroll hlinum volatile-highlights anzu php-mode web-mode helm popup-kill-ring popup-complete auto-complete flatland-black-theme flatland-theme monokai-theme))))
+    (tabbar multiple-cursors http centered-cursor-mode yascroll hlinum volatile-highlights anzu php-mode web-mode helm popup-kill-ring popup-complete auto-complete flatland-black-theme flatland-theme monokai-theme))))
 
 (global-set-key (kbd "M-x") #'helm-M-x)
 (global-set-key (kbd "C-x r b") #'helm-filtered-bookmarks)
