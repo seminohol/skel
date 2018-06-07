@@ -26,6 +26,13 @@ fi
 
 # TMUX autoload since login
 #if [ -z $TMUX ]; then
+#  echo -n "Connect TMUX? [Y/n]: "
+#  read ANSWER
+#  case $ANSWER in
+#      "" | "Y" | "y" | "yes" | "Yes" | "YES" );;
+#      * ) return;;
+#  esac
+#
 #  if $(tmux has-session 2> /dev/null); then
 #    exec tmux -u2 attach
 #  else
