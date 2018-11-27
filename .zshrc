@@ -19,16 +19,17 @@ bindkey -e
 
 # End of lines configured by zsh-newuser-install
 
-# zsh colorizing 
-setopt auto_cd
+# Check availability of gnuls
 if [[ $(uname) =~ BSD$ || $(uname) == DragonFly ]]; then
-    if [ -x /usr/local/bin/gnuls ]; then
-        function chpwd(){ gnuls -F --color }
-    else
-        function chpwd(){ ls -G }
+    LS="`which gnuls 2> /dev/null` --color"
+    if [ $? != 0 ]; then
+        LS="`which gls 2> /dev/null` --color"
+        if [ $? != 0 ]; then
+            LS="ls -G"
+        fi
     fi
 else
-    function chpwd(){ ls -F --color }
+    LS="ls --color"
 fi
 
 # PROMPT
@@ -68,25 +69,16 @@ alias tmux='tmux -u2'
 alias bye=exit
 alias emacs='$HOME/opt/bin/edit'
 
-if [[ $(uname) =~ BSD$ || $(uname) == DragonFly ]]; then
-    if [ -x /usr/local/bin/gnuls ]; then
-        alias la='gnuls --color -aF'
-        alias lf='gnuls --color -AF'
-        alias ll='gnuls --color -lhA'
-        alias ls='gnuls --color -hF'
-    else
-        alias la='ls -GaF'
-        alias lf='ls -GAF'
-        alias ll='ls -GlhA'
-        alias ls='ls -GhF'
-    fi
-else
-    alias la='ls --color -aF'
-    alias lf='ls --color -AF'
-    alias ll='ls --color -lhA'
-    alias ls='ls --color -hF'
-fi
+alias la="${LS} -aF"
+alias lf="${LS} -AF"
+alias ll="${LS} -lhA"
+alias ls="${LS} -hF"
 
+# zsh hooks
+setopt auto_cd
+function chpwd(){ ls }
+
+# Load custom aliases
 if [ -f ~/.alias ]; then
   source ~/.alias
 fi
@@ -96,7 +88,7 @@ if [ -f ~/.export ]; then
   source ~/.export
 fi
 
-# Banner
+# Show banner
 if [ -f ~/.banner ]; then
         source ~/.banner
 fi
