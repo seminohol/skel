@@ -20,13 +20,14 @@ bindkey -e
 # End of lines configured by zsh-newuser-install
 
 # Check availability of gnuls
+# Check availability of gnuls
 if [[ $(uname) =~ BSD$ || $(uname) == DragonFly ]]; then
-    LS="`which gnuls 2> /dev/null` --color"
-    if [ $? != 0 ]; then
-        LS="`which gls 2> /dev/null` --color"
-        if [ $? != 0 ]; then
-            LS="ls -G"
-        fi
+    if [ -x `which gnuls` ]; then
+        LS="gnuls --color"
+    elif [ -x `which gls` ]; then
+        LS="gls --color"
+    else
+        LS="ls -G"
     fi
 else
     LS="ls --color"
