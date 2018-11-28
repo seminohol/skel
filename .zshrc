@@ -22,9 +22,9 @@ bindkey -e
 # Check availability of gnuls
 # Check availability of gnuls
 if [[ $(uname) =~ BSD$ || $(uname) == DragonFly ]]; then
-    if [ -x `which gnuls` ]; then
+    if [ -x "`which gnuls 2> /dev/null`" ]; then
         LS="gnuls --color"
-    elif [ -x `which gls` ]; then
+    elif [ -x "`which gls 2> /dev/null`" ]; then
         LS="gls --color"
     else
         LS="ls -G"
