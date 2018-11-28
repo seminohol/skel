@@ -59,6 +59,11 @@ if [[ -f ~/.zsh/dircolors-solarized/dircolors.256dark && -x `which dircolors` ]]
   zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 fi
 
+# adapt zsh-peco-history
+if [[ -f ~/.zsh/zsh-peco-history/zsh-peco-history.zsh && -x `which peco` ]]; then
+    source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
+fi
+
 # Options
 stty stop undef
 
