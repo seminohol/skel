@@ -123,7 +123,6 @@ Version 2017-11-01"
 (global-set-key  (kbd "C-;") 'helm-mini)
 ; C-P is M-x
 (global-set-key  (kbd "C-S-p") 'helm-M-x)
-(global-set-key  (kbd "C-P") 'helm-M-x)
 ; C-z is Undo
 (define-key global-map (kbd "C-z") 'undo)
 ; ... also C-t is suspend instead of C-z.
