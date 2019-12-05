@@ -22,6 +22,7 @@ DIRSTACKSIZE=25
 setopt AUTO_PUSHD
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 alias dirs="dirs -v | head -n 10"
+alias ds=dirs
 
 # COMPINIT!
 autoload -Uz compinit && compinit
