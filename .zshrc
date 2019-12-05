@@ -1,11 +1,9 @@
 # The following lines were added by compinstall
 
+zstyle ':completion:*' menu select
 zstyle ':completion:*' completer _expand _complete _ignored
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}' 'm:{[:lower:]}={[:upper:]}'
-zstyle :compinstall filename "/home/$USER/.zshrc"
-
-autoload -Uz compinit
-compinit
+zstyle  :compinstall   filename "/home/$USER/.zshrc"
 
 # End of lines added by compinstall
 
@@ -19,7 +17,15 @@ bindkey -e
 
 # End of lines configured by zsh-newuser-install
 
-# Check availability of gnuls
+# cd Stacking
+DIRSTACKSIZE=25
+setopt AUTO_PUSHD
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+alias dirs="dirs -v | head -n 10"
+
+# COMPINIT!
+autoload -Uz compinit && compinit
+
 # Check availability of gnuls
 if [[ $(uname) =~ BSD$ || $(uname) == DragonFly ]]; then
     if [ -x "`which gnuls 2> /dev/null`" ]; then
