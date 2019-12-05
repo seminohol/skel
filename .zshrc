@@ -66,7 +66,7 @@ if [[ -f ~/.zsh/dircolors-solarized/dircolors.256dark && -x `which dircolors` ]]
 fi
 
 # adapt zsh-peco-history
-if [[ -f ~/.zsh/zsh-peco-history/zsh-peco-history.zsh && -x `which peco` ]]; then
+if [[ -f ~/.zsh/zsh-peco-history/zsh-peco-history.zsh && -x "`which peco 2> /dev/null`" ]]; then
     source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
 fi
 
