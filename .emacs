@@ -77,6 +77,7 @@ Version 2017-11-01"
     ))
 (setq initial-major-mode (quote text-mode))
 (global-set-key (kbd "C-c c") 'new-empty-buffer)
+(global-set-key (kbd "C-c C-c") 'new-empty-buffer)
 
 ;; Visual environments
 ; Theme
