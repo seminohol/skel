@@ -7,7 +7,6 @@ zstyle  :compinstall   filename "/home/$USER/.zshrc"
 
 # End of lines added by compinstall
 
-
 # Lines configured by zsh-newuser-install
 
 HISTFILE=~/.histfile
@@ -17,12 +16,11 @@ bindkey -e
 
 # End of lines configured by zsh-newuser-install
 
-# cd Stacking
+# cd Stacking 
 DIRSTACKSIZE=25
 setopt AUTO_PUSHD
 zstyle ':completion:*:cd:*' ignore-parents parent pwd
 alias dirs="dirs -v | head -n 10"
-alias ds=dirs
 
 # COMPINIT!
 autoload -Uz compinit && compinit
@@ -40,20 +38,19 @@ else
     LS="ls --color"
 fi
 
-# PROMPT
+# Prompt
 case "$TERM" in
 xterm*|rxvt*|*-256color)
-    PROMPT="
-%F{green}%n@%m%f %F{blue}%/%f
+	PROMPT="
+%F{green}%n@%m%f %F{cyan}%/%f
 %# "
-    ;;
+	;;
 *)
-    PROMPT="
+	PROMPT="
 %n@%m %/
 %# "
-    ;;
+	;;
 esac
-
 
 # adapt zsh-syntax-highlighting
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
@@ -61,31 +58,30 @@ if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
 fi
 
 # adapt dircolors-solarized
-if [[ -f ~/.zsh/dircolors-solarized/dircolors.256dark && -x `which dircolors` ]]; then
-  eval `dircolors ~/.zsh/dircolors-solarized/dircolors.256dark`
-  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-fi
-
-# adapt zsh-peco-history
-if [[ -f ~/.zsh/zsh-peco-history/zsh-peco-history.zsh && -x "`which peco 2> /dev/null`" ]]; then
-    source ~/.zsh/zsh-peco-history/zsh-peco-history.zsh
+if [ -f ~/.zsh/dircolors-solarized/dircolors.256dark ]; then
+    if [ -x "`which dircolors 2> /dev/null`" ]; then
+	eval `dircolors ~/.zsh/dircolors-solarized/dircolors.256dark`
+	zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+    elif [ -x "`which gdircolors 2> /dev/null`" ]; then
+	eval `gdircolors ~/.zsh/dircolors-solarized/dircolors.256dark`
+	zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+    fi
 fi
 
 # Options
 stty stop undef
 
 # Common aliases
-alias crontab='crontab -i'
 alias grep='grep --color=auto'
 alias df='df -h'
 alias tmux='tmux -u2'
 alias bye=exit
-alias emacs='$HOME/opt/bin/edit'
-
+alias emacs='$HOME/local/bin/edit'
 alias la="${LS} -aF"
 alias lf="${LS} -AF"
-alias ll="${LS} -lhA"
+alias ll="${LS} -lh"
 alias ls="${LS} -hF"
+alias trs="traceroute -I"
 
 # zsh hooks
 setopt auto_cd
@@ -103,5 +99,9 @@ fi
 
 # Show banner
 if [ -f ~/.banner ]; then
-        source ~/.banner
+        xargs --null echo -ne < ~/.banner
 fi
+
+# Use fzf for complementation and shell history
+[ -f ~/.fzf/.fzf.zsh ] && source ~/.fzf/.fzf.zsh
+

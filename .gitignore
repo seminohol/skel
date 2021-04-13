@@ -1,26 +1,8 @@
-# Ignoring all files
-/*
-/.*
-
-# Collection of dotfiles
-!/.bash_profile
-!/.bashrc
-!/.vimrc
-!/.vim
-!/.gitignore
-!/.gitconfig
-!/.screenrc
-!/.tmux.conf
-!/.zshrc
-!/.zprofile
-!/.zsh
-!/.emacs
-!/.emacs.d
-
 # but ignorng follows
-/.emacs.d/backups/*
-/.emacs.d/auto-save-list/*
-/.emacs.d/recentf
-/.emacs.d/tramp
+/emacs.d/backups/*
+/emacs.d/auto-save-list/*
+/emacs.d/recentf
+/emacs.d/tramp
+*.zwc*
 *.elc
 *~

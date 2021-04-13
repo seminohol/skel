@@ -1,0 +1,1 @@
+/home/semi/.dotfiles/fzf/shell/key-bindings.fish
