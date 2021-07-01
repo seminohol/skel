@@ -103,5 +103,5 @@ if [ -f ~/.banner ]; then
 fi
 
 # Use fzf for complementation and shell history
-[ -f ~/.fzf/.fzf.zsh ] && source ~/.fzf/.fzf.zsh
+[ -f ~/.zsh/zsh-fzf-history/zsh-fzf-history.zsh ] && source ~/.zsh/zsh-fzf-history/zsh-fzf-history.zsh
 
